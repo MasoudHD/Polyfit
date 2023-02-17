@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/mheid/OneDrive/Desktop/polyfit/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\poly.dir\\main.c.obj -c C:\\Users\\mheid\\OneDrive\\Desktop\\polyfit\\main.c",
+  "file": "C:/Users/mheid/OneDrive/Desktop/polyfit/main.c",
+  "output": "CMakeFiles/poly.dir/main.c.obj"
+}
+]
