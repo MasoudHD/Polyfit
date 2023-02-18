@@ -95,7 +95,6 @@ double getDeviation(int order, double* dev, double* p, double* x, double* y, int
         {
             res = res + p[j]*pow(x[i], j);
         }
-        printf("y[%d] = %lf\n", i, res);
         dev[i] = (100.0*res/y[i])-100.0;
         if(fabs(dev[i]) > fabs(maxDev))
         {
