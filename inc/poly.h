@@ -39,6 +39,7 @@
 
 
 int polyfit(double* res, double* x, double* y, int order, int len);
+double getDeviation(int order, double* dev, double* p, double* x, double* y, int len);
 
 
 #ifdef __cplusplus

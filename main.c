@@ -44,14 +44,25 @@ int main()
 
     //Now lets check if everything is ok.
     //By changing xIndex you can check if every x value in x array returns the desire y or not.
-    //Every x value will be replaced to the equation (with calculated coefficients) to calculate the y
-    int xIndex = 4;
+    //Every x value will be replaced in the equation (with calculated coefficients) to calculate the y
+    int xIndex = 3;
     double res = 0.0;
     for(int i=order; i>=0; i--)
     {
         res = res + P[i]*pow(x[xIndex], i);
     }
-    printf("x=%lf, y=%lf, result=%lf\n",x[xIndex], y[xIndex], res);
+    printf("x=%lf, y=%lf, result=%lf\n", x[xIndex], y[xIndex], res);
     //If everything was okay, the y value and the result value should be almost the same.
+    
+    //To calculate the deviation (error) of the equation with calculated coefficients:
+    double dev[len];
+    double maxDev = getDeviation(order, dev, P, x, y, len);
+    for(int i=0; i<len; i++)
+    {
+        printf("dev[%d] = %lf\n", i, dev[i]);
+    }
+    printf("MaxDev = %lf\n", maxDev);
+    //To get the best result (less error/deviation), change the order or add more x and y data.
+
     return 0;
 }

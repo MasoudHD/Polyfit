@@ -18,7 +18,7 @@ double sigma(int start, int end, double* arr, int power);
 double determinant(int order, double matBase[order][order]);
 
 /**
-  * @brief           Fit a polynomial p(x) = p[0] * x**deg + ... + p[deg] of degree 
+  * @brief          Fit a polynomial p(x) = p[0] * x**deg + ... + p[deg] of degree 
  *                  deg to points (x, y). 
  *                  Returns an array of coefficients p that minimises the squared 
  *                  error in the order 0, 1, ..., deg-1, deg.
@@ -72,6 +72,37 @@ int polyfit(double* p, double* x, double* y, int order, int len)
         p[k] = determinant(order, mat0)/determinant(order, mat);
     }
     return STATUS_OK;
+}
+
+/**
+ * @brief           Calculate the Deviation percentage of the equation with the given coefficients.
+ * 
+ * @param order     The degree of the polynomial (0 ~ MAX_ORDER)         
+ * @param dev       An array for returning the deviations for each x and y value. 
+ * @param p         Calculated coefficients (by polyfit function).
+ * @param x         An array of x values 
+ * @param y         An array of y values
+ * @param len       The lenght of the x and y (both should have same sizes) 
+ * @return double   Return the maximum deviation in percentage (might be negative). 
+ */
+double getDeviation(int order, double* dev, double* p, double* x, double* y, int len)
+{
+    double maxDev = 0.0;
+    for(int i=0; i<len; i++)
+    {
+        double res = 0.0;
+        for(int j=order; j>=0; j--)
+        {
+            res = res + p[j]*pow(x[i], j);
+        }
+        printf("y[%d] = %lf\n", i, res);
+        dev[i] = (100.0*res/y[i])-100.0;
+        if(fabs(dev[i]) > fabs(maxDev))
+        {
+            maxDev = dev[i];
+        }
+    }
+    return maxDev;
 }
 
 /**
