@@ -39,7 +39,8 @@ int main()
     //Display the coefficients
     for(int i=0; i<order+1; i++)
     {
-        printf("P%i= %lf\n", i, P[i]);
+        //printf("P%i= %lf\n", i, P[i]);
+        printf("P%i= %.*e\n", i, 10, P[i]);
     }
 
     //Now lets check if everything is ok.
@@ -64,5 +65,15 @@ int main()
     printf("MaxDev = %lf\n", maxDev);
     //To get the best result (less error/deviation), change the order or add more x and y data.
 
+
+    for(int i=0; i<len; i++)
+    {
+        double res = 0.0;
+        for(int j=order; j>=0; j--)
+        {
+            res = res + P[j]*pow(x[i], j);
+        }
+        printf("RES[%d] = %lf\n", i, res);
+    }
     return 0;
 }

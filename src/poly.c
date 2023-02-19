@@ -14,8 +14,8 @@
 
 #include "poly.h"
 
-double sigma(int start, int end, double* arr, int power);
-double determinant(int order, double matBase[order][order]);
+static double sigma(int start, int end, double* arr, int power);
+static double determinant(int order, double matBase[order][order]);
 
 /**
   * @brief          Fit a polynomial p(x) = p[0] * x**deg + ... + p[deg] of degree 
@@ -113,7 +113,7 @@ double getDeviation(int order, double* dev, double* p, double* x, double* y, int
  * @param power     The power of the array's values     
  * @return double   Return the sigma value 
  */
-double sigma(int start, int end, double* arr, int power)
+static double sigma(int start, int end, double* arr, int power)
 {
     double res = 0.0;
 
@@ -131,7 +131,7 @@ double sigma(int start, int end, double* arr, int power)
  * @param matBase   The matrix for calculating its determinant. 
  * @return double   Return the determinant 
  */
-double determinant(int order, double matBase[order][order])
+static double determinant(int order, double matBase[order][order])
 {
     double res = 1.0;
     double ratio = 0.0;
